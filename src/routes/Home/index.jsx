@@ -64,11 +64,11 @@ function Home() {
               variant="outlined"
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              name="tokenNumber"
+              label="Token Number"
+              type="text"
+              id="token-number"
+              autoComplete="token-number"
             />
           </Grid>
         </Grid>
