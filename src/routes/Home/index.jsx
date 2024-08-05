@@ -19,9 +19,11 @@ function Home() {
     console.log(formData);
     //TODO: call form post api
 
-    fetch('http://localhost:9292/api/add-vehicle', {
+    fetch('http://localhost:8080/insertUserDetail', {
       method: 'POST',
       headers: {
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": '*',
         "Content-Type": "application/json",
       },
       body: formData

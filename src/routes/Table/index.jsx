@@ -19,48 +19,11 @@ function Table() {
 
   useEffect(() => {
     //TODO: call get all data api
-    fetch("http://localhost:9292/api/get-all-data")
+    fetch("http://localhost:8080/user/getAll")
       .then((res) => res.json())
       .then((res) => setData(res))
       .catch((err) => console.log('err', err))
   }, []);
-
-  console.log('data', data)
-
-  function createData(
-    name,
-    fatherName,
-    designation,
-    address,
-    category,
-    tokenNo,
-    vehicleNo,
-    mobileNo
-  ) {
-    return {
-      name,
-      fatherName,
-      designation,
-      address,
-      category,
-      tokenNo,
-      vehicleNo,
-      mobileNo,
-    };
-  }
-
-  const rows = [
-    createData(
-      "Uttkarsh",
-      "Jai Prakash",
-      "Treasurer",
-      "102-B 24th avenue 213141 US New-Jersey,",
-      "General",
-      100,
-      "BO-21-1234",
-      "8123123453"
-    ),
-  ];
 
   function handleSearch(event) {
     setSearch(event.target.value);
@@ -69,6 +32,10 @@ function Table() {
   function handleClick() {
     console.log("search", search);
     //TODO: call get data by id api.
+    fetch(`http://localhost:8080/user/${search}`)
+      .then((res) => res.json())
+      .then((res) => setData(res))
+      .catch((err) => console.log('err', err))
   }
 
   return (
@@ -104,7 +71,7 @@ function Table() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {data.map((row) => (
               <TableRow
                 key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -114,9 +81,9 @@ function Table() {
                 <TableCell>{row.designation}</TableCell>
                 <TableCell width="20%">{row.address}</TableCell>
                 <TableCell>{row.category}</TableCell>
-                <TableCell>{row.tokenNo}</TableCell>
-                <TableCell>{row.vehicleNo}</TableCell>
-                <TableCell>{row.mobileNo}</TableCell>
+                <TableCell>{row.tokenNumber}</TableCell>
+                <TableCell>{row.vehicleNumber}</TableCell>
+                <TableCell>{row.contactNumber}</TableCell>
               </TableRow>
             ))}
           </TableBody>
