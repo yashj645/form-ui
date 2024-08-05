@@ -4,8 +4,8 @@ import Styled from './styles'
 function Navbar() {
   return (
     <Styled.Navbar>
-      <Styled.Link href="/">Form</Styled.Link>
-      <Styled.Link href='/table'>Table</Styled.Link>
+      <Styled.Link href="/">Add Vehicle</Styled.Link>
+      <Styled.Link href='/table'>Vehicle List</Styled.Link>
     </Styled.Navbar>
   )
 }
