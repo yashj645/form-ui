@@ -9,7 +9,16 @@ import {
 function Home() {
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("event", event);
+    const formData = {};
+
+    // Access form elements and their values
+    for (const element of event.target.elements) {
+      if (element.value) {
+        formData[element.name] = element.value;
+      }
+    }
+  
+    console.log(formData);
   }
 
   return (
