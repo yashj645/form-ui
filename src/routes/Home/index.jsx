@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Container, Grid, TextField } from "@mui/material";
 // import Styled from "./style";
 
 function Home() {
   // const [file, setFile] = useState(null);
+  const navigate = useNavigate()
   function handleFormSubmit(event) {
     event.preventDefault();
     const formData = {};
@@ -16,6 +18,18 @@ function Home() {
     }
     console.log(formData);
     //TODO: call form post api
+
+    fetch('http://localhost:9292/api/add-vehicle', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: formData
+    })
+    .then((res) => {
+      console.log('res', res)
+      navigate('/table')
+    }).catch((err) => console.log('err', err))
   }
 
   // function handleFileUpload(event) {

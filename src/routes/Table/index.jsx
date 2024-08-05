@@ -15,10 +15,17 @@ import React, { useEffect, useState } from "react";
 
 function Table() {
   const [search, setSearch] = useState("");
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     //TODO: call get all data api
+    fetch("http://localhost:9292/api/get-all-data")
+      .then((res) => res.json())
+      .then((res) => setData(res))
+      .catch((err) => console.log('err', err))
   }, []);
+
+  console.log('data', data)
 
   function createData(
     name,
