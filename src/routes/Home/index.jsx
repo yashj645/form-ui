@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Container, Grid, TextField } from "@mui/material";
-import Styled from "./style";
+// import Styled from "./style";
 
 function Home() {
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
   function handleFormSubmit(event) {
     event.preventDefault();
     const formData = {};
@@ -14,15 +14,13 @@ function Home() {
         formData[element.name] = element.value;
       }
     }
-    console.log('file', file)
     console.log(formData);
+    //TODO: call form post api
   }
 
-  console.log("file", file);
-
-  function handleFileUpload(event) {
-    setFile(event.target.files[0]);
-  }
+  // function handleFileUpload(event) {
+  //   setFile(event.target.files[0]);
+  // }
 
   return (
     <Container style={{ marginTop: "64px" }}>
@@ -30,7 +28,7 @@ function Home() {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
-              autoComplete="fname"
+              autoComplete="name"
               name="name"
               variant="outlined"
               required
@@ -124,7 +122,7 @@ function Home() {
               autoComplete="mobileNo"
             />
           </Grid>
-          <Grid
+          {/* <Grid
             item
             xs={12}
             style={{
@@ -148,7 +146,7 @@ function Home() {
               />
             </Button>
             {file && file?.name}
-          </Grid>
+          </Grid> */}
         </Grid>
         <Button
           style={{ marginTop: "20px" }}
